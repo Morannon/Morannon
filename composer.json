@@ -1,0 +1,13 @@
+{
+    "name": "apinnecke/morannon",
+    "description": "SMS Gateway",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Pinnecke",
+            "email": "alexander.pinnecke@googlemail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
