@@ -1,6 +1,6 @@
 {
     "name": "apinnecke/morannon",
-    "description": "SMS Gateway",
+    "description": "SMS Gateway library to provide many sms providers behind a sigle interface.s",
     "license": "MIT",
     "authors": [
         {
@@ -8,6 +8,8 @@
             "email": "alexander.pinnecke@googlemail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "~5.0"
+    }
 }
