@@ -1,6 +1,6 @@
 {
     "name": "apinnecke/morannon",
-    "description": "SMS Gateway library to provide many sms providers behind a sigle interface.s",
+    "description": "SMS Gateway library to provide many sms providers behind a single interface.",
     "license": "MIT",
     "authors": [
         {
@@ -9,7 +9,13 @@
         }
     ],
     "minimum-stability": "stable",
+    "autoload": {
+        "psr-0": {
+            "Morannon\\": "src/"
+        }
+    },
     "require": {
+        "php": ">=5.3.3",
         "guzzlehttp/guzzle": "~5.0"
     }
 }
