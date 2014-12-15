@@ -2,6 +2,7 @@
 
 namespace Morannon\Nexmo;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Morannon\Gateway\AbstractGateway;
 use Morannon\Response\BaseSentResponse;
@@ -19,6 +20,10 @@ class NexmoGateway extends AbstractGateway
      */
     public function sendSMS(SMSInterface $sms)
     {
+        if (null === $this->httpClient) {
+            $this->httpClient = new Client();
+        }
+
         $data = $this->httpClient->post(
             $this->buildUrlString($this->getApiBaseUrl(), '/sms/json'),
             array(
