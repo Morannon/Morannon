@@ -8,6 +8,11 @@ namespace Morannon\SMS;
 class BaseSMS implements SMSInterface
 {
     /**
+     * @var string
+     */
+    protected $messageId;
+
+    /**
      * Sender name.
      *
      * @var string
@@ -92,6 +97,24 @@ class BaseSMS implements SMSInterface
     public function setTo($to)
     {
         $this->to = $to;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMessageId()
+    {
+        return $this->messageId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMessageId($messageId)
+    {
+        $this->messageId = $messageId;
 
         return $this;
     }

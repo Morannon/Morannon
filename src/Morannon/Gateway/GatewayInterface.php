@@ -2,6 +2,7 @@
 
 namespace Morannon\Gateway;
 
+use Morannon\Response\SentResponseInterface;
 use Morannon\SMS\SMSInterface;
 
 interface GatewayInterface
@@ -10,16 +11,9 @@ interface GatewayInterface
      * Sends an sms.
      *
      * @param SMSInterface $sms
-     * @return mixed
+     * @return SentResponseInterface $response
      */
     public function sendSMS(SMSInterface $sms);
-
-    /**
-     * Receives an SMS from current url.
-     *
-     * @return SMSInterface
-     */
-    public function receiveSMS();
 
     /**
      * Sets the API base url.

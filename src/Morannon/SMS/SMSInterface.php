@@ -5,6 +5,17 @@ namespace Morannon\SMS;
 interface SMSInterface
 {
     /**
+     * @return string
+     */
+    public function getMessageId();
+
+    /**
+     * @param string $messageId
+     * @return $this
+     */
+    public function setMessageId($messageId);
+
+    /**
      * Returns the text to send.
      *
      * @return string
