@@ -1,6 +1,6 @@
 <?php
 
-namespace Morannon\SMS;
+namespace Morannon\Base\SMS;
 
 /**
  * Base SMS Message class implementation.

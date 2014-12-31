@@ -1,9 +1,9 @@
 <?php
 
-namespace Morannon\Gateway;
+namespace Morannon\Base\Gateway;
 
-use Morannon\Response\SentResponseInterface;
-use Morannon\SMS\SMSInterface;
+use Morannon\Base\Response\SentResponseInterface;
+use Morannon\Base\SMS\SMSInterface;
 
 interface GatewayInterface
 {

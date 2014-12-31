@@ -1,8 +1,8 @@
 <?php
 
-namespace Morannon\Gateway;
+namespace Morannon\Base\Gateway;
 
-use Morannon\SMS\SMSInterface;
+use Morannon\Base\SMS\SMSInterface;
 
 abstract class AbstractGateway implements GatewayInterface
 {

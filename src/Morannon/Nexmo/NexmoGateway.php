@@ -4,9 +4,9 @@ namespace Morannon\Nexmo;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use Morannon\Gateway\AbstractGateway;
-use Morannon\Response\BaseSentResponse;
-use Morannon\SMS\SMSInterface;
+use Morannon\Base\Gateway\AbstractGateway;
+use Morannon\Base\Response\BaseSentResponse;
+use Morannon\Base\SMS\SMSInterface;
 
 class NexmoGateway extends AbstractGateway
 {

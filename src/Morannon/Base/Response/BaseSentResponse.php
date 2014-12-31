@@ -1,8 +1,8 @@
 <?php
 
-namespace Morannon\Response;
+namespace Morannon\Base\Response;
 
-use Morannon\SMS\SMSInterface;
+use Morannon\Base\SMS\SMSInterface;
 
 class BaseSentResponse implements SentResponseInterface
 {
