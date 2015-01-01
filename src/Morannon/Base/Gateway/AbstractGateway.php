@@ -2,6 +2,7 @@
 
 namespace Morannon\Base\Gateway;
 
+use Guzzle\Http\ClientInterface;
 use Morannon\Base\SMS\SMSInterface;
 use Morannon\Base\Utils\UrlUtils;
 
@@ -21,23 +22,27 @@ abstract class AbstractGateway implements GatewayInterface
      * @var string
      */
     protected $apiToken;
+
     /**
      * @var UrlUtils
      */
     protected $urlUtils;
 
     /**
-     * @param UrlUtils $urlUtils
+     * @var ClientInterface
+     */
+    protected $httpClient;
+
+    /**
      * @param $apiBaseUrl
      * @param $apiToken
      * @param $apiUser
      */
-    public function __construct(UrlUtils $urlUtils, $apiBaseUrl, $apiToken, $apiUser)
+    public function __construct($apiBaseUrl, $apiToken, $apiUser)
     {
         $this->apiBaseUrl = $apiBaseUrl;
         $this->apiToken = $apiToken;
         $this->apiUser = $apiUser;
-        $this->urlUtils = $urlUtils;
     }
 
     /**
@@ -97,6 +102,38 @@ abstract class AbstractGateway implements GatewayInterface
     public function getApiUser()
     {
         return $this->apiUser;
+    }
+
+    /**
+     * @param ClientInterface $httpClient
+     */
+    public function setHttpClient(ClientInterface $httpClient)
+    {
+        $this->httpClient = $httpClient;
+    }
+
+    /**
+     * @return ClientInterface
+     */
+    public function getHttpClient()
+    {
+        return $this->httpClient;
+    }
+
+    /**
+     * @param UrlUtils $urlUtils
+     */
+    public function setUrlUtils($urlUtils)
+    {
+        $this->urlUtils = $urlUtils;
+    }
+
+    /**
+     * @return UrlUtils
+     */
+    public function getUrlUtils()
+    {
+        return $this->urlUtils;
     }
 }
  

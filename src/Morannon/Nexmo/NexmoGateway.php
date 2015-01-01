@@ -2,11 +2,11 @@
 
 namespace Morannon\Nexmo;
 
-use Morannon\Base\Gateway\AbstractHttpClientGateway;
+use Morannon\Base\Gateway\AbstractGateway;
 use Morannon\Base\Response\BaseSentResponse;
 use Morannon\Base\SMS\SMSInterface;
 
-class NexmoGateway extends AbstractHttpClientGateway
+class NexmoGateway extends AbstractGateway
 {
     /**
      * {@inheritdoc}

@@ -4,11 +4,11 @@ namespace Morannon\WhateverMobile;
 
 use Guzzle\Http\Exception\RequestException;
 use Morannon\Base\Exception\DeliveryFailedException;
-use Morannon\Base\Gateway\AbstractHttpClientGateway;
+use Morannon\Base\Gateway\AbstractGateway;
 use Morannon\Base\Response\BaseSentResponse;
 use Morannon\Base\SMS\SMSInterface;
 
-class WhateverMobileGateway extends AbstractHttpClientGateway
+class WhateverMobileGateway extends AbstractGateway
 {
     /**
      * {@inheritdoc}
