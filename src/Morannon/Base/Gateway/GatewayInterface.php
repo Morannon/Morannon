@@ -2,6 +2,7 @@
 
 namespace Morannon\Base\Gateway;
 
+use Morannon\Base\Exception\DeliveryFailedException;
 use Morannon\Base\Response\SentResponseInterface;
 use Morannon\Base\SMS\SMSInterface;
 
@@ -12,6 +13,7 @@ interface GatewayInterface
      *
      * @param SMSInterface $sms
      * @return SentResponseInterface $response
+     * @throws DeliveryFailedException
      */
     public function sendSMS(SMSInterface $sms);
 

@@ -2,32 +2,24 @@
 
 namespace Morannon\Nexmo;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use Morannon\Base\Gateway\AbstractGateway;
+use Morannon\Base\Gateway\AbstractHttpClientGateway;
 use Morannon\Base\Response\BaseSentResponse;
 use Morannon\Base\SMS\SMSInterface;
 
-class NexmoGateway extends AbstractGateway
+class NexmoGateway extends AbstractHttpClientGateway
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $httpClient;
-
     /**
      * {@inheritdoc}
      */
     public function sendSMS(SMSInterface $sms)
     {
-        if (null === $this->httpClient) {
-            $this->httpClient = new Client();
-        }
-
         $data = $this->httpClient->post(
-            $this->buildUrlString($this->getApiBaseUrl(), '/sms/json'),
+            $this->urlUtils->buildUrlString($this->getApiBaseUrl(), '/sms/json'),
             array(
-                'json' => array(
+                'content-type' => 'application/json'
+            ),
+            json_encode(
+                array(
                     'api_key' => $this->getApiUser(),
                     'api_secret' => $this->getApiToken(),
                     'type' => 'text',
@@ -36,7 +28,7 @@ class NexmoGateway extends AbstractGateway
                     'text' => urlencode(utf8_encode($sms->getText()))
                 )
             )
-        )->json();
+        )->send()->json();
 
         $sms->setMessageId($data['message-id']);
 
@@ -49,13 +41,4 @@ class NexmoGateway extends AbstractGateway
 
         return $response;
     }
-
-    /**
-     * @param ClientInterface $httpClient
-     */
-    public function setHttpClient(ClientInterface $httpClient)
-    {
-        $this->httpClient = $httpClient;
-    }
 }
- 

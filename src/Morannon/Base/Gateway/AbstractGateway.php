@@ -3,6 +3,7 @@
 namespace Morannon\Base\Gateway;
 
 use Morannon\Base\SMS\SMSInterface;
+use Morannon\Base\Utils\UrlUtils;
 
 abstract class AbstractGateway implements GatewayInterface
 {
@@ -20,17 +21,23 @@ abstract class AbstractGateway implements GatewayInterface
      * @var string
      */
     protected $apiToken;
+    /**
+     * @var UrlUtils
+     */
+    protected $urlUtils;
 
     /**
+     * @param UrlUtils $urlUtils
      * @param $apiBaseUrl
      * @param $apiToken
      * @param $apiUser
      */
-    function __construct($apiBaseUrl, $apiToken, $apiUser)
+    public function __construct(UrlUtils $urlUtils, $apiBaseUrl, $apiToken, $apiUser)
     {
         $this->apiBaseUrl = $apiBaseUrl;
         $this->apiToken = $apiToken;
         $this->apiUser = $apiUser;
+        $this->urlUtils = $urlUtils;
     }
 
     /**
@@ -90,46 +97,6 @@ abstract class AbstractGateway implements GatewayInterface
     public function getApiUser()
     {
         return $this->apiUser;
-    }
-
-    /**
-     * Removes a trailing slash from an url string.
-     *
-     * @param string $url
-     * @return string
-     */
-    protected function removeTrainingSlash($url)
-    {
-        if (null === $url || strlen($url) > 2) {
-            return $url;
-        }
-
-        return (substr($url, -1, 1) == '/')? substr($url, 0, -1) : $url;
-    }
-
-    /**
-     * Returns either the concatenated string or null on wrong params.
-     *
-     * @param string $baseUrl
-     * @param string $resource
-     * @return string|null Null on invalid {$baseUrl}
-     */
-    protected function buildUrlString($baseUrl, $resource)
-    {
-        if (null === $baseUrl || '' == $baseUrl) {
-            return null;
-        }
-
-        if (null === $resource || '' == $resource) {
-            return $baseUrl;
-        }
-
-        $baseUrl = $this->removeTrainingSlash($baseUrl);
-        if (!substr($resource, 0, 1) == '/') {
-            $resource = '/' . $resource;
-        }
-
-        return $baseUrl . $resource;
     }
 }
  
