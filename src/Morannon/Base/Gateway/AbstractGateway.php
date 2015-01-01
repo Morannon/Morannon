@@ -38,11 +38,11 @@ abstract class AbstractGateway implements GatewayInterface
      * @param $apiToken
      * @param $apiUser
      */
-    public function __construct($apiBaseUrl, $apiToken, $apiUser)
+    public function __construct($apiBaseUrl, $apiUser, $apiToken)
     {
         $this->apiBaseUrl = $apiBaseUrl;
-        $this->apiToken = $apiToken;
         $this->apiUser = $apiUser;
+        $this->apiToken = $apiToken;
     }
 
     /**
