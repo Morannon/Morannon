@@ -13,7 +13,7 @@ final class UrlUtils
      */
     public function removeTrainingSlash($url)
     {
-        if (null === $url || strlen($url) > 2) {
+        if (null === $url || strlen($url) <= 2) {
             return $url;
         }
 
@@ -59,8 +59,12 @@ final class UrlUtils
             return $data;
         }
 
-        $parts = explode(PHP_EOL, $body);
+        $parts = preg_split("/\\r?\\n/", $body);
         foreach ($parts as $str) {
+            if (!$str) {
+                continue;
+            }
+
             list ($key, $value) = explode('=', $str);
             $data[$key] = $value;
         }
