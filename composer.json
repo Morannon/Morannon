@@ -1,5 +1,5 @@
 {
-    "name": "apinnecke/morannon",
+    "name": "morannon/morannon",
     "description": "SMS Gateway library to provide many sms providers behind a single interface.",
     "license": "MIT",
     "authors": [
