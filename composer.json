@@ -8,7 +8,6 @@
             "email": "alexander.pinnecke@googlemail.com"
         }
     ],
-    "minimum-stability": "stable",
     "autoload": {
         "psr-0": {
             "Morannon\\": "src/",
