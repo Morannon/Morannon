@@ -34,7 +34,7 @@ class WhateverMobileGateway extends AbstractGateway
                         'body' => mb_convert_encoding($sms->getText(), 'ISO-8859-15', mb_detect_encoding($sms->getText()))
                     )
                 )
-            )->send();
+            )->send()->getBody(true);
         } catch (RequestException $ex) {
             throw new DeliveryFailedException($ex->getMessage(), 0, $ex);
         }
