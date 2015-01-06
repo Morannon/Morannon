@@ -15,9 +15,10 @@ class WhateverMobileGateway extends AbstractGateway
      */
     public function sendSMS(SMSInterface $sms)
     {
-        $toNumber = $sms->getTo();
-        while(substr($toNumber, 0, 2) != '00') {
-            $toNumber = '0' . $toNumber;
+        $toNumber = '' . $sms->getTo();
+        if(substr($toNumber, 0, 2) == '00'){
+            $toNumber = substr($toNumber, 2);
+            $toNumber = substr($toNumber, 0, 15);
         }
 
         try {
@@ -30,7 +31,7 @@ class WhateverMobileGateway extends AbstractGateway
                         'password' => $this->getApiToken(),
                         'from' => $sms->getFrom(),
                         'to' => $toNumber,
-                        'text' => mb_convert_encoding($sms->getText(), 'ISO-8859-15', mb_detect_encoding($sms->getText()))
+                        'body' => mb_convert_encoding($sms->getText(), 'ISO-8859-15', mb_detect_encoding($sms->getText()))
                     )
                 )
             )->send();
