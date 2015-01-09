@@ -1,8 +1,7 @@
 <?php
 
-namespace Morannon\WhateverMobile;
+namespace Morannon\Base\Gateway;
 
-use Morannon\Base\Gateway\AbstractGateway;
 use Morannon\Base\Response\BaseSentResponse;
 use Morannon\Base\SMS\SMSInterface;
 
